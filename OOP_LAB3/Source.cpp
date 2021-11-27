@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <ctime>
 #include <typeinfo>
 using namespace std;
@@ -85,27 +85,34 @@ public:
 	void GetName(int index)
 	{
 		if (size != 0)
+			if (objects[index])
 			objects[index]->GetName();
+			else cout << ("ÑÑ‡ÐµÐ¹ÐºÐ° Ð¿ÑƒÑÑ‚Ð°\n");
 
 	}
 
 	void PullOut(int index)
 	{
-		// objects[index] = NULL;
+
+		 objects[index] = NULL;
 	}
 	void Next(int index)
 	{
 		if (index < size - 1)
 		{
-			cout << ("Ñëåäóþùèé îáúåêò - ýòî ");
-			GetName(index + 1);
+			cout << ("Ð¡Ð»ÐµÐ´ÑƒÑŽÑ‰Ð¸Ð¹ Ð¾Ð±ÑŠÐµÐºÑ‚ - ÑÑ‚Ð¾ ");
+			
+				GetName(index + 1);
+			
+			
 		}
 	}
 	void Prev(int index)
 	{
 		if (index > 1)
 		{
-			cout << "Ïðåäûäóùèé îáúåêò - ýòî ";
+			cout << "ÐŸÑ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰Ð¸Ð¹ Ð¾Ð±ÑŠÐµÐºÑ‚ - ÑÑ‚Ð¾ ";
+			
 			GetName(index - 1);
 		}
 	}
@@ -132,10 +139,10 @@ public:
 	}
 	void GetCount()
 	{
-		cout << "\n\nÊîëè÷åñòâî îáúåêòîâ = " << count << "\n";
-		cout << "Êîëè÷åñòâî óäàëåííûõ îáúåêòîâ = " << countdel << "\n";
-		cout << "Êîëè÷åñòâî äîáàâëåííûõ îáúåêòîâ = " << countadd << "\n";
-		cout << "runtime = " << clock() / 1000.0 << endl;
+		cout << "\n\nÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² = " << count << "\n";
+		cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ñ… Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² = " << countdel << "\n";
+		cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ñ… Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² = " << countadd << "\n";
+	
 	}
 	int GetSize()
 	{
@@ -156,12 +163,12 @@ void actions(int count, MyStorage& storage)
 			if ((rand()) % 2 == 0)
 			{
 				storage.Add(new Point2D);
-				cout << "Äîáàâëåí îáúåêò Point2D\n";
+				cout << "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½ Point2D\n";
 			}
 			else
 			{
 				storage.Add(new Point3D);
-				cout << "Äîáàâëåí îáúåêò Point3D\n";
+				cout << "Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½ Point3D\n";
 			}
 			break;
 		case 2:
@@ -189,7 +196,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	srand(time(0));
-
+	
 
 	MyStorage storage(10);
 
@@ -203,12 +210,18 @@ int main()
 	}
 
 	actions(100, storage);
+	int t = clock();
+	cout << "runtime = " << t << " Ð¼Ñ" << endl;
 	cout << "\n\n";
 	system("pause");
 	actions(1000, storage);
+	 t = clock() - t;
+	 cout << "runtime = " << t << " Ð¼Ñ" << endl;
 	cout << "\n\n";
 	system("pause");
 	actions(10000, storage);
+	t = clock() - t;
+	cout << "runtime = " << t << " Ð¼Ñ" << endl;
 	cout << "\n\n";
 	system("pause");
 
