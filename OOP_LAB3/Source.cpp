@@ -210,13 +210,15 @@ int main()
 	}
 
 	actions(100, storage);
-	int t = clock();
+	int t;
+	int k;
+	t = clock();
 	cout << "runtime = " << t << " мс" << endl;
 	cout << "\n\n";
 	system("pause");
 	actions(1000, storage);
-	 t = clock() - t;
-	 cout << "runtime = " << t << " мс" << endl;
+	t = clock() - t;
+	cout << "runtime = " << t << " мс" << endl;
 	cout << "\n\n";
 	system("pause");
 	actions(10000, storage);
